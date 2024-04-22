@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Cars</title>
+    <style>  
+        body {
+            background-color: rgb(61, 143, 163);
+            color: white; 
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #278899;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #1a3742;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Vehicle Number</th>
+                <th>Seating Capacity</th>
+                <th>Rent Per Day</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="car-list"></tbody>
+    </table>
+
+    <script>
+        
+        const cars = [
+            { model: "Toyota Camry", number: "ABC123", seatingCapacity: 5, rentPerDay: 5000 },
+
+            { model: "Toyota Camry", number: "ABC123", seatingCapacity: 5, rentPerDay: 5000 },
+            { model: "Toyota Corolla", number: "XYZ456", seatingCapacity: 5, rentPerDay: 6098 },
+            { model: "Honda Civic", number: "DEF789", seatingCapacity: 4, rentPerDay: 4000 },
+            { model: "Ford Mustang", number: "GHI012", seatingCapacity: 4, rentPerDay: 70000 },
+
+            { model: "Toyota Camry", number: "ABC123", seatingCapacity: 5, rentPerDay: 5099 },
+            { model: "Toyota Corolla", number: "XYZ456", seatingCapacity: 5, rentPerDay: 6045 },
+            { model: "Honda Civic", number: "DEF789", seatingCapacity: 4, rentPerDay: 4032 },
+            { model: "Ford Mustang", number: "GHI012", seatingCapacity: 4, rentPerDay: 7034 },
+
+            { model: "Toyota Camry", number: "ABC123", seatingCapacity: 5, rentPerDay: 5024},
+            { model: "Toyota Corolla", number: "XYZ456", seatingCapacity: 5, rentPerDay: 6023 },
+            { model: "Honda Civic", number: "DEF789", seatingCapacity: 4, rentPerDay: 6640 },
+            { model: "Ford Mustang", number: "GHI012", seatingCapacity: 4, rentPerDay: 7056 },
+        
+        ];
+
+        
+        function displayCars() {
+            const carList = document.getElementById("car-list");
+
+            cars.forEach(car => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${car.model}</td>
+                    <td>${car.number}</td>
+                    <td>${car.seatingCapacity}</td>
+                    <td>₹${car.rentPerDay}</td>
+                    <td><button class="rent-btn" data-model="${car.model}">Rent Car</button></td>
+                `;
+                carList.appendChild(row);
+            });
+
+            
+            const rentButtons = document.querySelectorAll(".rent-btn");
+            rentButtons.forEach(btn => {
+                btn.addEventListener("click", rentCar);
+            });
+        }
+        
+        function rentCar(event) {
+            const model = event.target.dataset.model;
+            const loggedIn = true; 
+
+            if (!loggedIn) {
+                
+                window.location.href = "login.html";
+            } else {
+                
+                const days = prompt("Enter number of days:");
+                const startDate = prompt("Enter start date:");
+
+                
+                alert(`You have booked ${model} for ${days} days starting from ${startDate}.`);
+            }
+        }
+
+        
+        window.onload = displayCars;
+    </script>
+</body>
+</html>

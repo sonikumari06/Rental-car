@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Login Page</title>
+    
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(7178884.jpg); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .register-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .login-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .login-form, .register-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-form input, .register-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .login-form button, .register-form button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #9bf0f7;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-form button:hover, .register-form button:hover {
+            background-color: #0056b3;
+        }
+        .register-form {
+            display: none;
+            border: 1px solid #ccc; 
+            padding: 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        
+        <form class="login-form" id="login-form" action="your_login_endpoint" method="POST">
+            <h1>Login</h1>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Rental Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" id="register-link">Register here</a></p>
+            </div>
+        </form>
+    </div>
+      
+    <div class="register-container">
+        <div class="register-link">
+            <form class="register-form" id="register-form" action="your_registration_endpoint" method="POST">
+                <h1>Registration</h1>
+                <input type="email" name="email" placeholder="Email" required> <br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
+                <button type="submit">Register</button>
+                <button type="button" id="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        function redirectToNewPage() {
+            window.location.href = "AddNewC.html"; 
+        }
+    
+        
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            redirectToNewPage(); 
+        });
+    
+    
+        document.getElementById('login-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'flex';
+        });
+    
+    
+        document.getElementById('register-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        });
+    </script>
+    
+    
+    
+</body>
+</html>
+
+
